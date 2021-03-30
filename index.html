@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div class="container pt-6 pl-3 pr-3" id="demo">
+        <article class="panel is-black">
+
+            <p class="panel-heading" v-if="show">Mi Portafolio</p>
+            <div class="panel-block">
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" v-on:click="pagina = 1">Inicio</a>
+                        <a class="navbar-item" v-on:click="pagina = 2">Skills</a>
+                        <a class="navbar-item" v-on:click="pagina = 3">CV</a>
+                        <a class="navbar-item" v-on:click="pagina = 4">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="box">
+            <article class="media" v-if="pagina===1">
+                <div class="media-left">
+                    <figure class="image is-128x128">
+                        <img class="is-rounded" src="img/imagen_perfil.jpeg" alt="Image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                        <p class="title is-4">Eduardo Salazar</p>
+                        <p class="subtitle is-6">esalazarp@uni.pe</p>
+                            Hola, mi nombre es Eduardo, Salazar Pauccar tengo 21 años y estudio la carrera de ingeniería de sistemas
+                            en la Universidad Nacional de Ingeniería.
+                            <br>
+                            Me apasiona la tecnología y la gestión de proyectos, es por ello que he participado en organizaciones
+                            como Proyecta UNI y el Centro Cultural Núcleo.
+                            <br>
+                            Actualmente me encuentro capacitado con conocimientos de mapeo de procesos, business intelligence y contabilidad.
+                            Además de conocimientos propios de mi carrera como análisis y diseño de sistemas, diseño de bases de datos y
+                            arquitectura empresarial.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="media" v-if="pagina===2" v-for="i in listaCapacidades" :key="i.id">
+                <div class="card-content">
+                    <div class="conocimiento">
+                        <strong>{{i.conocimiento}}</strong>
+                    </div>
+                    <div class="nivel">
+                        <p> {{i.nivel}}</p>
+                    </div>
+                    <div class="descripcion">
+                        <small> {{i.descripcion}}</small>
+                    </div>
+                </div>
+            </article>
+
+            <embed v-if="pagina===3" src="doc/cv.pdf" type="application/pdf" width="100%" height="600px" />
+
+            <article class="media" v-if="pagina===4">
+                <div class="card-content">
+                    <div class="contacto">
+                        <strong>Celular: </strong>
+                    </div>
+                    <div class="dato">
+                        <p>+51 922 655 875</p>
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <div class="contacto">
+                        <strong>Correo Principal</strong>
+                    </div>
+                    <div class="dato">
+                        <p>esalazarp@uni.pe</p>
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <div class="contacto">
+                        <strong>Correo Secundario</strong>
+                    </div>
+                    <div class="dato">
+                        <p>eduardo23nov99@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <div class="contacto">
+                        <strong>LinkedIn</strong>
+                    </div>
+                    <div class="dato">
+                        <a href="https://www.linkedin.com/in/eduardosalazarp/" target="_blank">/eduardosalazarp</a>
+                    </div>
+                </div>
+            </article>
+            <article class="media" v-if="pagina===4">
+            </article>
+        </div>
+    </div>
+
+</body>
+<script src="app/app.js"></script>
+
+</html>
